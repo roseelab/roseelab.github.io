@@ -32,13 +32,71 @@
   html{scroll-behavior:smooth;}
   body{
     margin:0;
-    background:linear-gradient(180deg, var(--c1) 0%, var(--c2) 20%, var(--c3) 42%, var(--c4) 62%, var(--c5) 82%, var(--c6) 100%);
+    background-image:url('images/bg-liquid-glass.jpg');
+    background-size:cover;
+    background-position:center;
     background-attachment:fixed;
-    background-size:100% 100%;
+    background-repeat:no-repeat;
+    background-color:var(--c1);
     color:var(--ink);
     font-family:var(--sans);
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
+    position:relative;
+  }
+  .bg-orbs{display:none;}
+  .bg-orbs{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    overflow:hidden;
+    pointer-events:none;
+  }
+  .bg-orbs span{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:.55;
+    mix-blend-mode:soft-light;
+  }
+  .bg-orbs span:nth-child(1){
+    width:44vw;height:44vw;
+    top:-10%;left:-12%;
+    background:radial-gradient(circle, #fff 0%, var(--c1) 70%);
+    animation:orbFloat1 26s ease-in-out infinite;
+  }
+  .bg-orbs span:nth-child(2){
+    width:38vw;height:38vw;
+    top:20%;right:-14%;
+    background:radial-gradient(circle, #fff 0%, var(--c2) 70%);
+    animation:orbFloat2 32s ease-in-out infinite;
+  }
+  .bg-orbs span:nth-child(3){
+    width:50vw;height:50vw;
+    top:55%;left:-16%;
+    background:radial-gradient(circle, #fff 0%, var(--c3) 70%);
+    animation:orbFloat3 30s ease-in-out infinite;
+  }
+  .bg-orbs span:nth-child(4){
+    width:40vw;height:40vw;
+    bottom:-14%;right:-10%;
+    background:radial-gradient(circle, #fff 0%, var(--c5) 70%);
+    animation:orbFloat1 24s ease-in-out infinite reverse;
+  }
+  @keyframes orbFloat1{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(4%,6%) scale(1.08);}
+  }
+  @keyframes orbFloat2{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(-5%,4%) scale(1.05);}
+  }
+  @keyframes orbFloat3{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(3%,-5%) scale(1.1);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .bg-orbs span{animation:none !important;}
   }
   img{max-width:100%;display:block;}
   a{color:inherit;text-decoration:none;}
@@ -87,9 +145,10 @@
     position:sticky;
     top:0;
     z-index:50;
-    background:rgba(255,255,255,0.86);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(20px) saturate(160%);
+    -webkit-backdrop-filter:blur(20px) saturate(160%);
+    border-bottom:1px solid rgba(255,255,255,0.4);
   }
   .nav{
     max-width:var(--maxw);
@@ -224,12 +283,25 @@
 
   /* ---------- GLASS CARDS (lisibilité sur le dégradé) ---------- */
   .glass{
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    border-radius:18px;
-    border:1px solid rgba(255,255,255,0.4);
+    position:relative;
+    background:rgba(255,255,255,0.62);
+    backdrop-filter:blur(22px) saturate(160%);
+    -webkit-backdrop-filter:blur(22px) saturate(160%);
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,0.55);
+    box-shadow:
+      0 8px 32px rgba(32,30,32,0.18),
+      inset 0 1px 0 rgba(255,255,255,0.6);
+    overflow:hidden;
   }
+  .glass::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 40%);
+    pointer-events:none;
+  }
+  .glass > *{position:relative;z-index:1;}
 
   /* ---------- ABOUT ---------- */
   .about{
@@ -311,6 +383,42 @@
     text-transform:uppercase;
     opacity:.5;
     white-space:nowrap;
+  }
+
+  .reel{padding-top:0;}
+  .reel-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 2.6rem;
+  }
+  .reel-head .eyebrow{display:block;margin-bottom:1rem;}
+  .reel-head h2{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2rem,4vw,2.8rem);
+    margin:0;
+    line-height:1.15;
+  }
+  .reel-frame{
+    max-width:900px;
+    margin:0 auto;
+    aspect-ratio:16/9;
+    padding:1rem;
+  }
+  .reel-frame video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:12px;
+    display:block;
+  }
+  .reel-hint{
+    text-align:center;
+    font-size:.7rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    opacity:.55;
+    margin-top:1.2rem;
   }
 
   /* ---------- PROJECTS ---------- */
@@ -449,9 +557,10 @@
 
   /* ---------- CONTACT ---------- */
   .contact{
-    background:rgba(32,30,32,0.55);
-    backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
+    background:rgba(32,30,32,0.42);
+    backdrop-filter:blur(24px) saturate(140%);
+    -webkit-backdrop-filter:blur(24px) saturate(140%);
+    border-top:1px solid rgba(255,255,255,0.15);
     color:var(--paper);
     text-align:center;
   }
@@ -477,7 +586,7 @@
   .contact-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
 
   /* ---------- FOOTER ---------- */
-  footer{padding:3.5rem 1.5rem 2.5rem;color:var(--paper);}
+  footer{padding:3.5rem 1.5rem 2.5rem;color:var(--ink);}
   .footer-word{
     font-family:var(--serif);
     font-weight:500;
@@ -488,7 +597,7 @@
     margin:0 0 2.5rem;
     white-space:nowrap;
     overflow:hidden;
-    color:var(--paper);
+    color:var(--ink);
   }
   .footer-bottom{
     max-width:var(--maxw);
@@ -499,7 +608,7 @@
     flex-wrap:wrap;
     gap:1rem;
     padding-top:1.6rem;
-    border-top:1px solid rgba(255,255,255,0.25);
+    border-top:1px solid rgba(32,30,32,0.2);
     font-size:.72rem;
     letter-spacing:.06em;
     opacity:.75;
@@ -544,12 +653,17 @@
 </head>
 <body>
 
+<div class="bg-orbs" aria-hidden="true">
+  <span></span><span></span><span></span><span></span>
+</div>
+
 <header>
   <nav class="nav">
     <a href="#top" class="wordmark">Rosee Lab</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#reel">Motion</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -584,6 +698,21 @@
       <span>AI Packshots</span><span>·</span><span>Cosmetics</span><span>·</span><span>Skincare</span><span>·</span><span>Perfumery</span><span>·</span>
     </div>
   </div>
+
+  <!-- REEL / VIDEO -->
+  <section id="reel" class="reel wrap">
+    <div class="reel-head reveal">
+      <span class="eyebrow">Motion</span>
+      <h2>Behind the visuals</h2>
+    </div>
+    <div class="reel-frame glass reveal">
+      <!-- Replace the src below with your own video file, e.g. images/my-video.mp4 -->
+      <video controls muted playsinline poster="images/rl-monogram.jpeg">
+        <source src="images/reel.mp4" type="video/mp4">
+      </video>
+    </div>
+    <p class="reel-hint">Add more clips by duplicating this block, or ask to add one per project.</p>
+  </section>
 
   <!-- ABOUT -->
   <section id="about" class="about wrap glass" style="padding:3.5rem;margin:0 1.5rem;max-width:calc(var(--maxw) - 3rem);">
@@ -747,6 +876,52 @@
       </div>
 
       <div class="project reveal">
+        <div class="project-media p6">
+          <div class="slider">
+            <div class="slide"><img src="images/melu-6.jpg" alt="Melu by Ruby Rose triple serum trio, energy superfruit fresh"></div>
+            <div class="slide"><img src="images/melu-2.jpg" alt="Melu by Ruby Rose three glass dropper serum bottles"></div>
+            <div class="slide"><img src="images/melu-3.jpg" alt="Melu by Ruby Rose orange bottle, dopamine formula"></div>
+            <div class="slide"><img src="images/melu-5.jpg" alt="Melu by Ruby Rose collection playful, three bottles"></div>
+            <div class="slide"><img src="images/melu-4.jpg" alt="Melu by Ruby Rose pink bottle glass texture close-up"></div>
+            <div class="slide"><img src="images/melu-1.jpg" alt="Melu by Ruby Rose green bottle clay-fresh close-up"></div>
+          </div>
+          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
+          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <div class="slider-dots"></div>
+        </div>
+        <div class="project-body glass" style="padding:2rem;">
+          <span class="project-num">06</span>
+          <h3>The Triple Serum Trio</h3>
+          <div class="project-client">Melu by Ruby Rose — Energy, Superfruit, Fresh</div>
+          <p>Playful clay-textured packshots for a collectible serum trio, built as a 3D toy universe around the "Dopamine Formula" and "Clay-Fresh" concepts.</p>
+        </div>
+      </div>
+
+      <div class="project reveal">
+        <div class="project-media p6">
+          <div class="slider">
+            <div class="slide"><img src="images/sheglam-1.jpg" alt="SHEGLAM Glow Starts Here, four lip cream shades poster"></div>
+            <div class="slide"><img src="images/sheglam-4.jpg" alt="SHEGLAM lip cream editorial, Vogue beauty selection"></div>
+            <div class="slide"><img src="images/sheglam-2.jpg" alt="SHEGLAM Strawberry Milk lip cream on marble"></div>
+            <div class="slide"><img src="images/sheglam-3.jpg" alt="SHEGLAM Melon Pop lip cream with pearls and rose gold ring"></div>
+            <div class="slide"><img src="images/sheglam-5.jpg" alt="SHEGLAM Strawberry Milk lip cream with water splash"></div>
+            <div class="slide"><img src="images/sheglam-6.jpg" alt="SHEGLAM lip cream emerging from darkness with light rays"></div>
+            <div class="slide"><img src="images/sheglam-7.jpg" alt="Hand holding SHEGLAM lip cream tube"></div>
+            <div class="slide"><img src="images/sheglam-8.jpg" alt="Woman smiling with pastel lips holding SHEGLAM lip cream"></div>
+          </div>
+          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
+          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <div class="slider-dots"></div>
+        </div>
+        <div class="project-body glass" style="padding:2rem;">
+          <span class="project-num">07</span>
+          <h3>Glow Starts Here</h3>
+          <div class="project-client">SHEGLAM — Candy Lane, Strawberry Milk, Cocoa Cookie, Melon Pop</div>
+          <p>Editorial packshots and lifestyle scenes for a hydrating lip cream in four shades, set across marble, water, and soft-light moods.</p>
+        </div>
+      </div>
+
+      <div class="project reveal">
         <div class="project-media p6" data-count="1">
           <div class="slider">
             <div class="slide"><img src="images/rl-monogram.jpeg" alt="Rosee Lab monogram"></div>
@@ -756,7 +931,7 @@
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
-          <span class="project-num">06</span>
+          <span class="project-num">08</span>
           <h3>Brand Identity</h3>
           <div class="project-client">Rosee Lab</div>
           <p>Design of the "RL" monogram and the visual identity for Rosee Lab itself.</p>
