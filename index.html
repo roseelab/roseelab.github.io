@@ -446,46 +446,60 @@
     line-height:1.15;
   }
 
-  /* ---------- REEL — horizontal single-band scroller ---------- */
-  .hband{
+  /* ---------- REEL — 3 rangées verticales, défilement continu ---------- */
+  .vwall{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:0;
+    height:70vh;
+    max-height:680px;
     border-radius:24px;
     overflow:hidden;
   }
-  .hband-track{
+  .vcol{
+    position:relative;
+    height:100%;
+    overflow:hidden;
+  }
+  .vcol-track{
     display:flex;
+    flex-direction:column;
     gap:0;
-    width:max-content;
-    animation:hScroll 40s linear infinite;
     will-change:transform;
     backface-visibility:hidden;
-    transform:translateZ(0);
   }
-  .hband:hover .hband-track{
-    animation-play-state:paused;
-  }
-  .hitem{
+  .vcol-up .vcol-track{animation:vScrollUp linear infinite;}
+  .vcol-down .vcol-track{animation:vScrollDown linear infinite;}
+  .vcol-1 .vcol-track{animation-duration:38s;}
+  .vcol-2 .vcol-track{animation-duration:46s;}
+  .vcol-3 .vcol-track{animation-duration:42s;}
+  .vitem{
     flex:0 0 auto;
-    width:260px;
+    width:100%;
     aspect-ratio:9/16;
-    border-radius:16px;
     overflow:hidden;
     transform:translateZ(0);
   }
-  .hitem video{
+  .vitem video{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
   }
-  @keyframes hScroll{
+  @keyframes vScrollUp{
     0%{transform:translate3d(0,0,0);}
-    100%{transform:translate3d(-50%,0,0);}
+    100%{transform:translate3d(0,-50%,0);}
+  }
+  @keyframes vScrollDown{
+    0%{transform:translate3d(0,-50%,0);}
+    100%{transform:translate3d(0,0,0);}
   }
   @media (max-width:800px){
-    .hitem{width:180px;}
+    .vwall{grid-template-columns:repeat(2,1fr);height:60vh;}
+    .vcol-3{display:none;}
   }
   @media (prefers-reduced-motion: reduce){
-    .hband-track{animation:none;}
+    .vcol-track{animation:none;}
   }
 
   .projects-head{
@@ -798,16 +812,36 @@
       <span class="eyebrow">Motion</span>
       <h2>Behind the visuals</h2>
     </div>
-    <div class="hband glass reveal" style="padding:1rem;">
-      <div class="hband-track">
-        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
-        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
-        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
-
-        <!-- copie identique, indispensable pour la boucle sans coupure -->
-        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
-        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
-        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+    <div class="vwall glass reveal" style="padding:1rem;">
+      <div class="vcol vcol-1 vcol-up">
+        <div class="vcol-track">
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+        </div>
+      </div>
+      <div class="vcol vcol-2 vcol-down">
+        <div class="vcol-track">
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+        </div>
+      </div>
+      <div class="vcol vcol-3 vcol-up">
+        <div class="vcol-track">
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+        </div>
       </div>
     </div>
   </section>
