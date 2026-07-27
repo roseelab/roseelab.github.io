@@ -455,7 +455,10 @@
     display:flex;
     gap:1.1rem;
     width:max-content;
-    animation:hScroll 34s linear infinite;
+    animation:hScroll 40s linear infinite;
+    will-change:transform;
+    backface-visibility:hidden;
+    transform:translateZ(0);
   }
   .hband:hover .hband-track{
     animation-play-state:paused;
@@ -466,6 +469,7 @@
     aspect-ratio:9/16;
     border-radius:16px;
     overflow:hidden;
+    transform:translateZ(0);
   }
   .hitem video{
     width:100%;
@@ -474,8 +478,8 @@
     display:block;
   }
   @keyframes hScroll{
-    0%{transform:translateX(0);}
-    100%{transform:translateX(-50%);}
+    0%{transform:translate3d(0,0,0);}
+    100%{transform:translate3d(-50%,0,0);}
   }
   @media (max-width:800px){
     .hitem{width:180px;}
