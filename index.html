@@ -428,26 +428,58 @@
     margin:0;
     line-height:1.15;
   }
-  .reel-frame{
-    max-width:900px;
-    margin:0 auto;
-    aspect-ratio:16/9;
-    padding:1rem;
+  .vwall{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1.1rem;
+    height:70vh;
+    max-height:680px;
+    border-radius:24px;
+    overflow:hidden;
   }
-  .reel-frame video{
+  .vcol{
+    position:relative;
+    height:100%;
+    overflow:hidden;
+    border-radius:18px;
+  }
+  .vcol-track{
+    display:flex;
+    flex-direction:column;
+    gap:1.1rem;
+  }
+  .vcol-up .vcol-track{animation:vScrollUp linear infinite;}
+  .vcol-down .vcol-track{animation:vScrollDown linear infinite;}
+  .vcol-1 .vcol-track{animation-duration:38s;}
+  .vcol-2 .vcol-track{animation-duration:46s;}
+  .vcol-3 .vcol-track{animation-duration:42s;}
+  .vitem{
+    flex:0 0 auto;
+    width:100%;
+    aspect-ratio:9/16;
+    border-radius:16px;
+    overflow:hidden;
+  }
+  .vitem video{
     width:100%;
     height:100%;
     object-fit:cover;
-    border-radius:12px;
     display:block;
   }
-  .reel-hint{
-    text-align:center;
-    font-size:.7rem;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    opacity:.55;
-    margin-top:1.2rem;
+  @keyframes vScrollUp{
+    0%{transform:translateY(0);}
+    100%{transform:translateY(-50%);}
+  }
+  @keyframes vScrollDown{
+    0%{transform:translateY(-50%);}
+    100%{transform:translateY(0);}
+  }
+  @media (max-width:800px){
+    .vwall{grid-template-columns:repeat(2,1fr);height:60vh;}
+    .vcol-3{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .vcol-track{animation:none !important;}
   }
 
   /* ---------- PROJECTS ---------- */
@@ -728,19 +760,44 @@
     </div>
   </div>
 
-  <!-- REEL / VIDEO -->
+  <!-- REEL / VIDEO WALL -->
   <section id="reel" class="reel wrap">
     <div class="reel-head reveal">
       <span class="eyebrow">Motion</span>
       <h2>Behind the visuals</h2>
     </div>
-    <div class="reel-frame glass reveal">
-      <!-- Replace the src below with your own video file, e.g. images/my-video.mp4 -->
-      <video controls muted playsinline poster="images/rl-monogram.jpeg">
-        <source src="images/reel.mp4" type="video/mp4">
-      </video>
+    <div class="vwall glass reveal" style="padding:1rem;">
+      <div class="vcol vcol-1 vcol-up">
+        <div class="vcol-track">
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+        </div>
+      </div>
+      <div class="vcol vcol-2 vcol-down">
+        <div class="vcol-track">
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+        </div>
+      </div>
+      <div class="vcol vcol-3 vcol-up">
+        <div class="vcol-track">
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+        </div>
+      </div>
     </div>
-    <p class="reel-hint">Add more clips by duplicating this block, or ask to add one per project.</p>
   </section>
 
   <!-- ABOUT -->
