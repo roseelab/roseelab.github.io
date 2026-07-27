@@ -450,7 +450,7 @@
   .vwall{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:0;
+    gap:1.1rem;
     height:70vh;
     max-height:680px;
     border-radius:24px;
@@ -460,11 +460,12 @@
     position:relative;
     height:100%;
     overflow:hidden;
+    border-radius:18px;
   }
   .vcol-track{
     display:flex;
     flex-direction:column;
-    gap:0;
+    gap:1.1rem;
     will-change:transform;
     backface-visibility:hidden;
   }
@@ -477,6 +478,7 @@
     flex:0 0 auto;
     width:100%;
     aspect-ratio:9/16;
+    border-radius:16px;
     overflow:hidden;
     transform:translateZ(0);
   }
