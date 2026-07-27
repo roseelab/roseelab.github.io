@@ -563,17 +563,47 @@
     width:2.4rem;height:2.4rem;
     border-radius:50%;
     background:rgba(255,255,255,.85);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
     border:1px solid var(--line);
     display:flex;align-items:center;justify-content:center;
     cursor:pointer;
-    font-family:var(--sans);
-    font-size:1rem;
     z-index:5;
-    transition:background .2s ease;
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+    box-shadow:0 4px 14px rgba(20,17,22,0.1);
   }
-  .slider-arrow:hover{background:#fff;}
+  .slider-arrow svg{
+    width:15px;height:15px;
+    stroke:var(--ink);
+    stroke-width:1.5;
+    fill:none;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    display:block;
+  }
+  .slider-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.08);}
   .slider-arrow.prev{left:.9rem;}
   .slider-arrow.next{right:.9rem;}
+
+  /* premier projet : cadrage au ratio naturel de la photo (pas de crop forcé) */
+  .project-media-auto{
+    aspect-ratio:auto !important;
+    height:auto;
+  }
+  .project-media-auto .ratio-sizer{
+    width:100%;
+    height:auto;
+    display:block;
+    visibility:hidden;
+    pointer-events:none;
+  }
+  .project-media-auto .slider{
+    position:absolute;
+    inset:0;
+  }
+  .project-media-auto .slide img{
+    object-fit:cover;
+  }
   .slider-dots{
     position:absolute;
     bottom:1rem;
@@ -861,7 +891,8 @@
       </div>
 
       <div class="project reveal">
-        <div class="project-media p1">
+        <div class="project-media p1 project-media-auto">
+          <img class="ratio-sizer" src="images/belnco-1.jpg" alt="" aria-hidden="true">
           <div class="slider">
             <div class="slide"><img src="images/belnco-1.jpg" alt="BEL·NCO Pure Prickly Pear Oil on beige background"></div>
             <div class="slide"><img src="images/belnco-2.jpg" alt="BEL·NCO Pure Prickly Pear Oil on marble"></div>
@@ -869,8 +900,12 @@
             <div class="slide"><img src="images/belnco-4.jpg" alt="BEL·NCO oil applied to skin"></div>
             <div class="slide"><img src="images/belnco-5.jpg" alt="BEL·NCO oil dripping from dropper"></div>
           </div>
-          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <button class="slider-arrow prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <button class="slider-arrow next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
@@ -892,8 +927,12 @@
             <div class="slide"><img src="images/byoma-6.jpg" alt="BYOMA SPF 50 texture swatch"></div>
             <div class="slide"><img src="images/byoma-7.jpg" alt="BYOMA SPF 50 application"></div>
           </div>
-          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <button class="slider-arrow prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <button class="slider-arrow next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
@@ -914,8 +953,12 @@
             <div class="slide"><img src="images/gisou-5.jpg" alt="Gisou lip oil with dates and chocolate"></div>
             <div class="slide"><img src="images/gisou-6.jpg" alt="Gisou lip oil with coffee beans"></div>
           </div>
-          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <button class="slider-arrow prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <button class="slider-arrow next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
@@ -937,8 +980,12 @@
             <div class="slide"><img src="images/arencia-6.jpg" alt="Arencia Rice Mochi Cleanser textures with florals"></div>
             <div class="slide"><img src="images/arencia-7.jpg" alt="Arencia Rice Mochi Cleanser collection on marble"></div>
           </div>
-          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <button class="slider-arrow prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <button class="slider-arrow next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
@@ -958,8 +1005,12 @@
             <div class="slide"><img src="images/yara-4.jpg" alt="Yara perfume bottle spraying mist"></div>
             <div class="slide"><img src="images/yara-5.jpg" alt="Yara perfume bottle on a vanity table"></div>
           </div>
-          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <button class="slider-arrow prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <button class="slider-arrow next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
@@ -980,8 +1031,12 @@
             <div class="slide"><img src="images/melu-4.jpg" alt="Melu by Ruby Rose pink bottle glass texture close-up"></div>
             <div class="slide"><img src="images/melu-1.jpg" alt="Melu by Ruby Rose green bottle clay-fresh close-up"></div>
           </div>
-          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <button class="slider-arrow prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <button class="slider-arrow next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
@@ -1004,8 +1059,12 @@
             <div class="slide"><img src="images/sheglam-7.jpg" alt="Hand holding SHEGLAM lip cream tube"></div>
             <div class="slide"><img src="images/sheglam-8.jpg" alt="Woman smiling with pastel lips holding SHEGLAM lip cream"></div>
           </div>
-          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <button class="slider-arrow prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <button class="slider-arrow next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
@@ -1017,12 +1076,17 @@
       </div>
 
       <div class="project reveal">
-        <div class="project-media p6" data-count="1">
+        <div class="project-media p6 project-media-auto" data-count="1">
+          <img class="ratio-sizer" src="images/rl-monogram.jpeg" alt="" aria-hidden="true">
           <div class="slider">
             <div class="slide"><img src="images/rl-monogram.jpeg" alt="Rosee Lab monogram"></div>
           </div>
-          <button class="slider-arrow prev" aria-label="Previous image">&#8249;</button>
-          <button class="slider-arrow next" aria-label="Next image">&#8250;</button>
+          <button class="slider-arrow prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15 5 L8 12 L15 19"/></svg>
+          </button>
+          <button class="slider-arrow next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M9 5 L16 12 L9 19"/></svg>
+          </button>
           <div class="slider-dots"></div>
         </div>
         <div class="project-body glass" style="padding:2rem;">
