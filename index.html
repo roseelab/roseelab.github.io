@@ -220,10 +220,6 @@
     margin:1.4rem auto 2.4rem;
   }
 
-  /* HERO VISUAL — corrigé : le fichier source contient 3 panneaux collés
-     (rose | gris+logo | rose). On ne garde que le panneau central (le logo)
-     recadré en médaillon, posé sur un halo flou issu de l'image entière,
-     au lieu d'afficher les 3 panneaux avec leurs coutures visibles. */
   .hero-visual{
     position:relative;
     width:100%;
@@ -308,7 +304,6 @@
   .hero-buttons .btn-solid{background:var(--ink);color:#fff;border-color:var(--ink);}
   .hero-buttons .btn-solid:hover{background:#000;}
 
-  /* marquee strip */
   .marquee{
     border-top:1px solid rgba(20,17,22,0.12);
     border-bottom:1px solid rgba(20,17,22,0.12);
@@ -338,7 +333,6 @@
   section{padding:6.5rem 1.5rem;}
   .wrap{max-width:var(--maxw);margin:0 auto;}
 
-  /* ---------- GLASS CARDS (lisibilité sur le fond sakura) ---------- */
   .glass{
     position:relative;
     background:rgba(255,255,255,0.28);
@@ -357,7 +351,6 @@
   .glass .stat-label{color:var(--ink);opacity:.6;}
   .glass .stat-num{color:var(--ink);}
 
-  /* ---------- ABOUT ---------- */
   .about{
     display:grid;
     grid-template-columns:.9fr 1.1fr;
@@ -399,7 +392,6 @@
     opacity:.6;
   }
 
-  /* ---------- SKILLS ---------- */
   .skills{}
   .skills-head{
     text-align:center;
@@ -453,59 +445,45 @@
     margin:0;
     line-height:1.15;
   }
-  .vwall{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:1.1rem;
-    height:70vh;
-    max-height:680px;
+
+  /* ---------- REEL — horizontal single-band scroller ---------- */
+  .hband{
     border-radius:24px;
     overflow:hidden;
   }
-  .vcol{
-    position:relative;
-    height:100%;
-    overflow:hidden;
-    border-radius:18px;
-  }
-  .vcol-track{
+  .hband-track{
     display:flex;
-    flex-direction:column;
     gap:1.1rem;
-    will-change:transform;
+    width:max-content;
+    animation:hScroll 34s linear infinite;
   }
-  .vcol-up .vcol-track{animation:vScrollUp linear infinite;}
-  .vcol-down .vcol-track{animation:vScrollDown linear infinite;}
-  .vcol-1 .vcol-track{animation-duration:38s;}
-  .vcol-2 .vcol-track{animation-duration:46s;}
-  .vcol-3 .vcol-track{animation-duration:42s;}
-  .vitem{
+  .hband:hover .hband-track{
+    animation-play-state:paused;
+  }
+  .hitem{
     flex:0 0 auto;
-    width:100%;
+    width:260px;
     aspect-ratio:9/16;
     border-radius:16px;
     overflow:hidden;
   }
-  .vitem video{
+  .hitem video{
     width:100%;
     height:100%;
     object-fit:cover;
     display:block;
   }
-  @keyframes vScrollUp{
-    0%{transform:translateY(0);}
-    100%{transform:translateY(-50%);}
-  }
-  @keyframes vScrollDown{
-    0%{transform:translateY(-50%);}
-    100%{transform:translateY(0);}
+  @keyframes hScroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
   }
   @media (max-width:800px){
-    .vwall{grid-template-columns:repeat(2,1fr);height:60vh;}
-    .vcol-3{display:none;}
+    .hitem{width:180px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hband-track{animation:none;}
   }
 
-  /* ---------- PROJECTS ---------- */
   .projects-head{
     text-align:center;
     max-width:640px;
@@ -552,7 +530,6 @@
   .p5{background:linear-gradient(160deg,var(--c5),var(--c6));}
   .p6{background:linear-gradient(200deg,var(--c6),var(--c5));}
 
-  /* ---------- SLIDER ---------- */
   .slider{
     position:absolute;inset:0;
     display:flex;
@@ -599,7 +576,6 @@
   .slider-arrow.prev{left:.9rem;}
   .slider-arrow.next{right:.9rem;}
 
-  /* premier projet : cadrage au ratio naturel de la photo (pas de crop forcé) */
   .project-media-auto{
     aspect-ratio:auto !important;
     height:auto;
@@ -669,7 +645,6 @@
     opacity:.85;
   }
 
-  /* ---------- CONTACT ---------- */
   .contact{
     background:rgba(33,48,42,0.5);
     backdrop-filter:blur(24px) saturate(140%);
@@ -699,7 +674,6 @@
   .contact .btn-ghost:hover{background:var(--paper);color:var(--ink);}
   .contact-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
 
-  /* ---------- FOOTER ---------- */
   footer{padding:3.5rem 1.5rem 2.5rem;color:var(--ink);}
   .footer-word{
     font-family:var(--serif);
@@ -751,7 +725,6 @@
     .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
   }
 
-  /* ---------- SCROLL REVEAL ---------- */
   .reveal{
     opacity:0;
     transform:translateY(28px);
@@ -815,42 +788,22 @@
     </div>
   </div>
 
-  <!-- REEL / VIDEO WALL -->
+  <!-- REEL / VIDEO BAND -->
   <section id="reel" class="reel wrap">
     <div class="reel-head reveal">
       <span class="eyebrow">Motion</span>
       <h2>Behind the visuals</h2>
     </div>
-    <div class="vwall glass reveal" style="padding:1rem;">
-      <div class="vcol vcol-1 vcol-up">
-        <div class="vcol-track">
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
-        </div>
-      </div>
-      <div class="vcol vcol-2 vcol-down">
-        <div class="vcol-track">
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
-        </div>
-      </div>
-      <div class="vcol vcol-3 vcol-up">
-        <div class="vcol-track">
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
-          <div class="vitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
-        </div>
+    <div class="hband glass reveal" style="padding:1rem;">
+      <div class="hband-track">
+        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
+
+        <!-- copie identique, indispensable pour la boucle sans coupure -->
+        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-1.mp4" type="video/mp4"></video></div>
+        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-2.mp4" type="video/mp4"></video></div>
+        <div class="hitem"><video autoplay muted loop playsinline><source src="images/reel-3.mp4" type="video/mp4"></video></div>
       </div>
     </div>
   </section>
@@ -1182,7 +1135,6 @@
     if(prevBtn) prevBtn.addEventListener('click', function(){ go(index - 1); });
     if(nextBtn) nextBtn.addEventListener('click', function(){ go(index + 1); });
 
-    // touch swipe
     var startX = null;
     slider.addEventListener('touchstart', function(e){ startX = e.touches[0].clientX; }, {passive:true});
     slider.addEventListener('touchend', function(e){
@@ -1193,7 +1145,6 @@
     });
   });
 
-  // Scroll reveal: fade + rise elements into view as they enter the viewport
   var revealEls = document.querySelectorAll('.reveal');
   if('IntersectionObserver' in window && revealEls.length){
     var revealObserver = new IntersectionObserver(function(entries){
