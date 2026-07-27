@@ -91,59 +91,7 @@
   @media (prefers-reduced-motion: reduce){
     .bg-orbs span{animation:none !important;}
   }
-  .bg-orbs{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    overflow:hidden;
-    pointer-events:none;
-  }
-  .bg-orbs span{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(70px);
-    opacity:.55;
-    mix-blend-mode:soft-light;
-  }
-  .bg-orbs span:nth-child(1){
-    width:44vw;height:44vw;
-    top:-10%;left:-12%;
-    background:radial-gradient(circle, #fff 0%, var(--c1) 70%);
-    animation:orbFloat1 26s ease-in-out infinite;
-  }
-  .bg-orbs span:nth-child(2){
-    width:38vw;height:38vw;
-    top:20%;right:-14%;
-    background:radial-gradient(circle, #fff 0%, var(--c2) 70%);
-    animation:orbFloat2 32s ease-in-out infinite;
-  }
-  .bg-orbs span:nth-child(3){
-    width:50vw;height:50vw;
-    top:55%;left:-16%;
-    background:radial-gradient(circle, #fff 0%, var(--c3) 70%);
-    animation:orbFloat3 30s ease-in-out infinite;
-  }
-  .bg-orbs span:nth-child(4){
-    width:40vw;height:40vw;
-    bottom:-14%;right:-10%;
-    background:radial-gradient(circle, #fff 0%, var(--c5) 70%);
-    animation:orbFloat1 24s ease-in-out infinite reverse;
-  }
-  @keyframes orbFloat1{
-    0%,100%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(4%,6%) scale(1.08);}
-  }
-  @keyframes orbFloat2{
-    0%,100%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(-5%,4%) scale(1.05);}
-  }
-  @keyframes orbFloat3{
-    0%,100%{transform:translate(0,0) scale(1);}
-    50%{transform:translate(3%,-5%) scale(1.1);}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .bg-orbs span{animation:none !important;}
-  }
+
   img{max-width:100%;display:block;}
   a{color:inherit;text-decoration:none;}
   ::selection{background:var(--blush);color:var(--ink);}
@@ -191,10 +139,10 @@
     position:sticky;
     top:0;
     z-index:50;
-    background:rgba(255,255,255,0.5);
-    backdrop-filter:blur(24px) saturate(180%);
-    -webkit-backdrop-filter:blur(24px) saturate(180%);
-    border-bottom:1px solid rgba(255,255,255,0.6);
+    background:rgba(255,255,255,0.22);
+    backdrop-filter:blur(28px) saturate(180%);
+    -webkit-backdrop-filter:blur(28px) saturate(180%);
+    border-bottom:1px solid rgba(255,255,255,0.4);
   }
   .wordmark{color:var(--ink);}
   .nav-links a{color:var(--ink);}
@@ -341,12 +289,12 @@
   /* ---------- GLASS CARDS (lisibilité sur le fond sakura) ---------- */
   .glass{
     position:relative;
-    background:rgba(255,255,255,0.55);
-    backdrop-filter:blur(36px) saturate(180%);
-    -webkit-backdrop-filter:blur(36px) saturate(180%);
+    background:rgba(255,255,255,0.28);
+    backdrop-filter:blur(40px) saturate(180%);
+    -webkit-backdrop-filter:blur(40px) saturate(180%);
     border-radius:26px;
-    border:1px solid rgba(255,255,255,0.7);
-    box-shadow:0 8px 32px rgba(232,147,181,0.25);
+    border:1px solid rgba(255,255,255,0.5);
+    box-shadow:0 8px 32px rgba(104,144,128,0.18);
     color:var(--ink);
   }
   .glass .eyebrow{color:var(--ink);opacity:.62;}
@@ -472,6 +420,7 @@
     display:flex;
     flex-direction:column;
     gap:1.1rem;
+    will-change:transform;
   }
   .vcol-up .vcol-track{animation:vScrollUp linear infinite;}
   .vcol-down .vcol-track{animation:vScrollDown linear infinite;}
@@ -502,9 +451,6 @@
   @media (max-width:800px){
     .vwall{grid-template-columns:repeat(2,1fr);height:60vh;}
     .vcol-3{display:none;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    .vcol-track{animation:none !important;}
   }
 
   /* ---------- PROJECTS ---------- */
