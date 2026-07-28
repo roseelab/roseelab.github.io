@@ -7,7 +7,7 @@
 <meta name="description" content="Rosee Lab — AI-generated product visuals for cosmetics, perfumery and skincare. No studio. No photographer. Just results.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#201E20;
@@ -23,7 +23,7 @@
     --c5:#4E2839;
     --c6:#201E20;
     --line: rgba(32,30,32,0.14);
-    --serif: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
+    --serif: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --maxw: 1280px;
   }
@@ -188,7 +188,7 @@
     width:34px;height:34px;
     flex-direction:column;justify-content:center;gap:6px;
   }
-  .burger span{display:block;width:100%;height:2px;background:var(--ink);}
+  .burger span{display:block;width:100%;height:2px;border-radius:2px;background:var(--ink);}
 
   /* ---------- HERO ---------- */
   .hero{
@@ -201,9 +201,9 @@
   .hero .eyebrow{display:block;margin-bottom:1.4rem;color:var(--ink);opacity:.7;}
   .hero-title{
     font-family:var(--serif);
-    font-weight:500;
+    font-weight:600;
     line-height:.92;
-    letter-spacing:-.01em;
+    letter-spacing:-.02em;
     font-size:clamp(3.2rem, 11vw, 9rem);
     margin:0;
     white-space:nowrap;
@@ -319,6 +319,7 @@
   .marquee-track span{
     font-family:var(--serif);
     font-style:italic;
+    font-weight:500;
     font-size:1.05rem;
     letter-spacing:.02em;
     margin:0 1.4rem;
@@ -360,10 +361,11 @@
   .about-head .eyebrow{margin-bottom:1rem;display:block;}
   .about-head h2{
     font-family:var(--serif);
-    font-weight:500;
+    font-weight:600;
     font-size:clamp(2rem, 4vw, 2.8rem);
     line-height:1.1;
     margin:0;
+    letter-spacing:-.01em;
   }
   .about-body p{
     font-size:1.05rem;
@@ -381,6 +383,7 @@
   }
   .stat-num{
     font-family:var(--serif);
+    font-weight:600;
     font-size:clamp(2rem,4vw,2.6rem);
     line-height:1;
   }
@@ -401,10 +404,11 @@
   .skills-head .eyebrow{display:block;margin-bottom:1rem;}
   .skills-head h2{
     font-family:var(--serif);
-    font-weight:500;
+    font-weight:600;
     font-size:clamp(2rem,4vw,2.8rem);
     margin:0;
     line-height:1.15;
+    letter-spacing:-.01em;
   }
   .skills-list{
     max-width:900px;
@@ -421,6 +425,7 @@
   }
   .skill-name{
     font-family:var(--serif);
+    font-weight:500;
     font-size:clamp(1.15rem,2.4vw,1.55rem);
   }
   .skill-tag{
@@ -440,10 +445,11 @@
   .reel-head .eyebrow{display:block;margin-bottom:1rem;}
   .reel-head h2{
     font-family:var(--serif);
-    font-weight:500;
+    font-weight:600;
     font-size:clamp(2rem,4vw,2.8rem);
     margin:0;
     line-height:1.15;
+    letter-spacing:-.01em;
   }
 
   /* ---------- REEL — 3 rangées verticales, défilement continu ---------- */
@@ -512,10 +518,11 @@
   .projects-head .eyebrow{display:block;margin-bottom:1rem;}
   .projects-head h2{
     font-family:var(--serif);
-    font-weight:500;
+    font-weight:600;
     font-size:clamp(2rem,4vw,2.8rem);
     margin:0;
     line-height:1.15;
+    letter-spacing:-.01em;
   }
   .project{
     display:grid;
@@ -586,7 +593,7 @@
   .slider-arrow svg{
     width:15px;height:15px;
     stroke:var(--ink);
-    stroke-width:1.5;
+    stroke-width:1.75;
     fill:none;
     stroke-linecap:round;
     stroke-linejoin:round;
@@ -638,6 +645,7 @@
   .project-num{
     font-family:var(--serif);
     font-style:italic;
+    font-weight:500;
     font-size:.95rem;
     opacity:.5;
     margin-bottom:1rem;
@@ -645,10 +653,11 @@
   }
   .project-body h3{
     font-family:var(--serif);
-    font-weight:500;
+    font-weight:600;
     font-size:clamp(1.6rem,3.4vw,2.2rem);
     margin:0 0 .3rem;
     line-height:1.15;
+    letter-spacing:-.01em;
   }
   .project-client{
     font-size:.72rem;
@@ -676,10 +685,11 @@
   .contact .eyebrow{color:var(--paper);opacity:.55;display:block;margin-bottom:1.4rem;}
   .contact h2{
     font-family:var(--serif);
-    font-weight:500;
+    font-weight:600;
     font-size:clamp(2.4rem,7vw,4.4rem);
     line-height:1.08;
     margin:0 0 1.6rem;
+    letter-spacing:-.01em;
   }
   .contact p{
     font-size:1.05rem;
@@ -697,10 +707,10 @@
   footer{padding:3.5rem 1.5rem 2.5rem;color:var(--ink);}
   .footer-word{
     font-family:var(--serif);
-    font-weight:500;
+    font-weight:600;
     font-size:clamp(3rem,13vw,10rem);
     line-height:.85;
-    letter-spacing:-.01em;
+    letter-spacing:-.02em;
     text-align:center;
     margin:0 0 2.5rem;
     white-space:nowrap;
